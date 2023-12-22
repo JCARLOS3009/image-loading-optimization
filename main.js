@@ -1,20 +1,22 @@
-    // Função para verificar se o dispositivo é um desktop
-    function isDesktop() {
-        return window.innerWidth > 768; // Ajuste o valor conforme necessário
+// Função para carregar a imagem conforme o tipo de dispositivo
+function loadImageBasedOnDevice() {
+    var imageElementDesktop = document.getElementById('myImage');
+    var imageElementMobile = document.getElementById('myImageMobile');
+
+    if (window.innerWidth > 768) {
+        // Se for um desktop, configure o atributo src com o caminho da imagem desejada para desktop
+        imageElementDesktop.src = 'https://res.cloudinary.com/dddvuoz7c/image/upload/v1702316381/Site-Poderosa/Banner-desktop/desk_dnc6bj.png';
+
+        // Oculta a imagem para dispositivos mobile
+        imageElementMobile.style.display = 'none';
+    } else {
+        // Se for um dispositivo mobile, configure o atributo src com o caminho da imagem desejada para mobile
+        imageElementMobile.src = 'https://res.cloudinary.com/dddvuoz7c/image/upload/v1702316864/Site-Poderosa/Banner-desktop/AnyConv.com___PODEROSA_BELEZA_A_solu%C3%A7%C3%A3o_para_cabelos_danificados_1180x350_jot4kl.webp';
+
+        // Oculta a imagem para desktop
+        imageElementDesktop.style.display = 'none';
     }
+}
 
-    // Função para carregar a imagem apenas se for um desktop
-    function loadDesktopImage() {
-        var imageElement = document.getElementById('myImage');
-
-        if (isDesktop()) {
-            // Se for um desktop, configure o atributo src com o caminho da imagem desejada
-            imageElement.src = 'caminho/da/sua/imagem.jpg';
-        } else {
-            // Caso contrário, você pode optar por não carregar a imagem ou definir uma imagem alternativa
-            imageElement.src = 'caminho/da/imagem/alternativa.jpg';
-        }
-    }
-
-    // Chame a função ao carregar a página
-    window.onload = loadDesktopImage;
+// Chame a função ao carregar a página
+window.onload = loadImageBasedOnDevice;
